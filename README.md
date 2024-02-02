@@ -24,6 +24,20 @@ Cargo is not just a **package manager**, it's also a **build system**. As your p
 
 `> cargo update`: Updates dependencies to the latest version. Follows SemVer rules.
 
+### Reading user input
+
+```rust
+use std::io;
+
+fn main() {
+    let mut user_input = String::new();
+    
+    io::stdin()
+    .read_line(&mut user_input)
+    .expect("Failed to read user input!");
+}
+```
+
 `std::io::stdin().read_line(&mut user_input)`
 reads user input and *appends* it to `user_input`, but it also returns a `Result<T>` enum.
 
@@ -36,15 +50,13 @@ reads user input and *appends* it to `user_input`, but it also returns a `Result
 * If `Ok(T)` --> `expect()` will take the value that `Ok` holds (number of bytes in the user's input) and return it.
 * If `Err` --> program crashes and prints input passed to `expect()`. This only happens if the underlying OS has any issues.
 
-`std::io::stdin().read_line(&mut user_input).expect("Failed to read user input!");`
-
 `let secret = rand::thread_rng().gen_range(1..=100);`
 
 `thread_rng()` is an RNG (random number generator) that is local to the current thread of execution and is seeded by the OS.
 
 ### Recovering gracefully from invalid user input
 
-`let gues = guess.trim().parse().expect("Please type a number!");`
+`let guess = guess.trim().parse().expect("Please type a number!");`
 
 Converting user input from `String` to `integer` types, but the whole program crashes if someone enters an invalid character. Instead, try recovering gracefully.
 
