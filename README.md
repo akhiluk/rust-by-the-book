@@ -71,7 +71,7 @@ Assign `num` to `guess` if the `parse()` operation succeeds, else ignore and con
 
 ### Notes on shadowing
 
-Making a varibale mutable means you can keep changing its value so long as they're the same type as the original variable. But when you shadow a variable, you're essentially creating a new variable with the `let` keyword, so the type can change.
+Making a variable mutable means you can keep changing its value so long as they're the same type as the original variable. But when you shadow a variable, you're essentially creating a new variable with the `let` keyword, so the type can change.
 
 ### Tuples
 
