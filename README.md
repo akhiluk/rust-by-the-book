@@ -50,6 +50,9 @@ reads user input and *appends* it to `user_input`, but it also returns a `Result
 * If `Ok(T)` --> `expect()` will take the value that `Ok` holds (number of bytes in the user's input) and return it.
 * If `Err` --> program crashes and prints input passed to `expect()`. This only happens if the underlying OS has any issues.
 
+
+### `thread_rng()`
+
 `let secret = rand::thread_rng().gen_range(1..=100);`
 
 `thread_rng()` is an RNG (random number generator) that is local to the current thread of execution and is seeded by the OS.
@@ -122,3 +125,25 @@ The act of creating a reference is called **borrowing**.
 * You cannot have a reference to a variable and a mutable reference to the same variable in the same scope.
 
 * However, you can have any number of immutable references to the same variable, since those are all read-only in nature.
+
+### Package Organization
+
+* **Packages**: A `cargo` feature to build, test and share **crates**.
+
+* **Crates**: A tree of **modules** that produces a library or executable.
+
+* **Modules**: Let you control the organization, scope, and privacy of **paths**.
+
+* **Paths**: A way of naming an item, such as a `struct`, `function` or `module`.
+
+**Binary crates**: Can be compiled to an executable, and each binary crate has a `main()` function.
+
+**Library crates**: Don't have a `main()` function, and cannot be compiled to an executable. A project may only have **one** library crate.
+
+### Points to Remember
+
+* Making a module public does not make its contents public --- those have to be made public explicitly.
+
+* Making a `struct` public does not make its contents public --- those have to be made public explicitly.
+
+* Making an `enum` public makes all of its variants public.
